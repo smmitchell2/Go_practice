@@ -66,23 +66,8 @@ func main()  {
   fmt.Printf("Person 2 name: %s age: %d\n",person2.name,person2.age)
 
   var list List = newList()
-  list = insert(list,10)
-  list = insert(list,20)
-  list = insert(list,30)
-  list = insert(list,10)
-  list = insert(list,20)
-  list = insert(list,30)
-  list = insert(list,10)
-  list = insert(list,20)
-  list = insert(list,30)
-  list = insert(list,10)
-  list = insert(list,20)
-  list = insert(list,30)
-  list = insert(list,10)
-  list = insert(list,20)
-  list = insert(list,30)
   var i int = 0
-  for(i<100000){
+  for(i<100){
     list = insert(list,i)
     i = i + 1
   }
