@@ -16,13 +16,37 @@ type List struct{
   tail *Node
 }
 
+func newNode(data int) Node{
+  var n Node
+  n.data = data
+  n.next = nil
+  return n
+}
+
 func printList(list List){
-  var temp Node
+  var temp *Node
   temp = list.head
   for(temp != nil){
-    fmt.Printf(temp.data)
+    fmt.Printf("%d \n",temp.data)
     temp = temp.next
   }
+}
+
+func insert(list List,data int){
+  if(list.head == nil){
+    var a Node = newNode(data)
+    list.head = &a
+  }else if(list.head.next == nil){
+    var b Node = newNode(data)
+    list.head.next = &b
+    list.tail = &b
+  }else{
+    var c Node = newNode(data)
+    temp *Node = list.tail
+    temp.next = &c
+    list.tail = &c
+  }
+
 }
 
 func main()  {
@@ -35,16 +59,14 @@ func main()  {
   person2.age = 39
   fmt.Printf("Person 1 name: %s age: %d\n",person1.name,person1.age)
   fmt.Printf("Person 2 name: %s age: %d\n",person2.name,person2.age)
-  var a Node
-  a.data = 10
-  var b Node
-  b.data = 20
-  var c Node
-  c.data = 30
-  a.next = &b
-  b.next = &c
-  var list list
-  list.head = &a
-  list.tail = &c
+  //var a Node = newNode(10)
+//  var b Node = newNode(20)
+//var c Node = newNode(30)
+  //a.next = &b
+  //b.next = &c
+  var list List
+  insert(list,10)
+  //list.head = &a
+  //list.tail = &c
   printList(list)
 }
