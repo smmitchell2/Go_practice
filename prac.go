@@ -23,6 +23,13 @@ func newNode(data int) Node{
   return n
 }
 
+func newList() List{
+  var list List
+  list.head = nil
+  list.tail = nil
+  return list
+}
+
 func printList(list List){
   var temp *Node
   temp = list.head
@@ -32,21 +39,19 @@ func printList(list List){
   }
 }
 
-func insert(list List,data int){
+func insert(list List,data int) List{
+  var a Node = newNode(data)
   if(list.head == nil){
-    var a Node = newNode(data)
     list.head = &a
-  }else if(list.head.next == nil){
-    var b Node = newNode(data)
-    list.head.next = &b
-    list.tail = &b
-  }else{
-    var c Node = newNode(data)
-    temp *Node = list.tail
-    temp.next = &c
-    list.tail = &c
+  } else if(list.head.next == nil){
+    list.head.next = &a
+    list.tail = &a
+  } else {
+    var temp *Node = list.tail
+    temp.next = &a
+    list.tail = &a
   }
-
+  return list
 }
 
 func main()  {
@@ -59,14 +64,28 @@ func main()  {
   person2.age = 39
   fmt.Printf("Person 1 name: %s age: %d\n",person1.name,person1.age)
   fmt.Printf("Person 2 name: %s age: %d\n",person2.name,person2.age)
-  //var a Node = newNode(10)
-//  var b Node = newNode(20)
-//var c Node = newNode(30)
-  //a.next = &b
-  //b.next = &c
-  var list List
-  insert(list,10)
-  //list.head = &a
-  //list.tail = &c
+
+  var list List = newList()
+  list = insert(list,10)
+  list = insert(list,20)
+  list = insert(list,30)
+  list = insert(list,10)
+  list = insert(list,20)
+  list = insert(list,30)
+  list = insert(list,10)
+  list = insert(list,20)
+  list = insert(list,30)
+  list = insert(list,10)
+  list = insert(list,20)
+  list = insert(list,30)
+  list = insert(list,10)
+  list = insert(list,20)
+  list = insert(list,30)
+  var i int = 0
+  for(i<100000){
+    list = insert(list,i)
+    i = i + 1
+  }
+
   printList(list)
 }
